@@ -1,0 +1,30 @@
+import pandas as pd
+Kilometers = pd.read_excel('Kilometers.xlsx')
+Kilometers=Kilometers.fillna(0)
+a=[]
+b=[]
+row,column=Kilometers.shape
+Kilometers.head()
+for i in range(row):
+    for j in range(1,column):
+        meter = Kilometers.iat[i,j]
+        a.append(meter)
+k=Kilometers.columns.values[1:]
+b=k
+v=[]
+for i in range(len(k)):
+    for j in range(len(k)):
+        src=k[i].replace(' ','')
+        dst=k[j].replace(' ','')
+        name=src+' '+dst
+        v.append(name)
+final=[]
+for i in range(len(v)):
+    new = str(v[i])+' '+str(a[i])
+    final.append(new)
+len(final)
+fileObject = open('world2.txt', 'w',encoding='utf-8')
+for ip in final:
+    fileObject.write(ip)
+    fileObject.write('\n')
+fileObject. close()
